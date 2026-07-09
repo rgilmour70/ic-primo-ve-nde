@@ -1,0 +1,21 @@
+:root {
+  --ic-blue: #003b71;
+}
+.top-bar {
+  background-color: var(--ic-blue) !important;
+}
+.main-menu-container .main-menu-label {
+  color: white !important;
+}
+.main-menu-container .mat-mdc-button:not(:disabled) {
+  color: white !important;
+}
+.main-menu-container button .mat-icon {
+  fill: white !important;
+}
+nde-logo img {
+  height: 41px !important;
+}
+#user-area-button svg * {
+  fill: white !important;
+}
