@@ -19,3 +19,6 @@ nde-logo img {
 #user-area-button svg * {
   fill: white !important;
 }
+.record-thumbnail {
+  outline: 0 !important;
+}
