@@ -22,3 +22,6 @@ nde-logo img {
 .record-thumbnail {
   outline: 0 !important;
 }
+nde-record-actions {
+  display: flex !important;
+}
