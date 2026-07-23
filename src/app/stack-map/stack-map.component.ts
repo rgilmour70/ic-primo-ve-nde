@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+} from '@angular/core';
 import stackMapDataGeneral from '../../assets/map-data-general.json';
 import stackMapDataMusic from '../../assets/map-data-music.json';
 import stackMapDataBlobs from '../../assets/map-data-blobs.json';
@@ -16,14 +23,16 @@ const icBlobs: ICBlobs = stackMapDataBlobs;
   templateUrl: './stack-map.component.html',
   styleUrl: './stack-map.component.scss',
 })
-export class StackMapComponent implements OnInit {
+export class StackMapComponent implements OnInit, AfterViewInit {
   @Input() protected hostComponent!: { location: PrimoLocation };
+  @ViewChild('overlay') overlayRef!: ElementRef<HTMLCanvasElement>;
 
   callNumber: string = '';
   location: string = '';
   locationCode: string = '';
   isAvailable: boolean = true;
-  result: ICBlob | ICLocation | undefined = undefined;
+  needsMap: boolean = false;
+  result: ICBlob | ICLocation | undefined;
 
   ngOnInit(): void {
     this.callNumber = this.hostComponent.location.callNumber;
@@ -32,9 +41,17 @@ export class StackMapComponent implements OnInit {
     this.isAvailable =
       this.hostComponent.location.availabilityStatus === 'available';
     this.result = this.lookupStackLocation(this.locationCode, this.callNumber);
+    this.needsMap = Boolean(this.isAvailable && this.callNumber);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.result) {
+      this.drawMarker(this.result);
+    }
   }
 
   hasMessage(value: ICBlob | ICLocation | undefined): value is ICBlob {
+    // test if something is an ICBlob
     return !!value && 'message' in value;
   }
 
@@ -45,6 +62,24 @@ export class StackMapComponent implements OnInit {
       : this.result.id?.slice(0, 1);
   }
 
+  get stack(): string | undefined {
+    if (!this.result) return undefined;
+    if (this.hasMessage(this.result)) return undefined; // ICBlob has no "stack"
+    return this.result.id!.split('.')[1];
+  }
+
+  get stackSide(): string | undefined {
+    if (!this.result) return undefined;
+    if (this.hasMessage(this.result)) return undefined;
+    return this.result.id!.slice(-1) === 'e' ? 'east' : 'west';
+  }
+
+  get locationMessage(): string | undefined {
+    if (!this.result) return undefined;
+    if (this.hasMessage(this.result)) return undefined;
+    return `This item is on floor ${this.floor} at stack ${this.stack}, ${this.stackSide} side.`;
+  }
+
   get floorMapSrc(): string {
     return `/assets/images/floorMaps/floor_${this.floor}@2x.png`;
   }
@@ -52,7 +87,7 @@ export class StackMapComponent implements OnInit {
   private findLocation(callNumber: string): ICLocation | undefined {
     const normalizedCallNumber = normalizeLC(callNumber);
     if (!normalizedCallNumber) {
-      console.warn(`Could not normalize call number: ${callNumber}`);
+      // console.warn(`Could not normalize call number: ${callNumber}`);
       return undefined;
     }
     let datasource =
@@ -78,12 +113,20 @@ export class StackMapComponent implements OnInit {
       return this.findLocation(callNumber);
     }
   }
+
+  private drawMarker(loc: ICBlob | ICLocation): void {
+    const ctx = this.overlayRef.nativeElement.getContext('2d');
+    if (!ctx) return;
+    const scale = 2;
+    ctx.clearRect(0, 0, 1200, 704);
+    ctx.fillStyle = 'fuchsia';
+    ctx.lineWidth = 4;
+    ctx.globalAlpha = 0.6;
+    ctx.fillRect(
+      loc.x * scale,
+      loc.y * scale,
+      loc.width * scale,
+      loc.height * scale
+    );
+  }
 }
-// drawIndicator(
-//   mapHeight: number,
-//   mapWidth: number,
-//   x: number,
-//   y: number,
-//   h: number,
-//   w: number
-// ): void {}

@@ -1,1 +1,25 @@
+.stack-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1200 / 704;
+}
 
+.stack-map-container img,
+.stack-map-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-area {
+  margin-left: 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .map-area {
+    margin-left: 3rem;
+  }
+}

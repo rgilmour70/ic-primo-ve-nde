@@ -1,7 +1,13 @@
-@if (hasMessage(result)) {
-<div>{{ result.message }}</div>
-} @else {
-<div>{{ result!.id }}</div>
+@if (this.needsMap) {
+<div class="map-area">
+  @if (hasMessage(result)) {
+  <div>{{ result.message }}</div>
+  } @else {
+  <div>{{ this.locationMessage }}</div>
+  }
+  <div class="stack-map-container">
+    <img [src]="floorMapSrc" #floorMap />
+    <canvas #overlay width="1200" height="704"></canvas>
+  </div>
+</div>
 }
-<img [src]="floorMapSrc" #floorMap [width]="600" [height]="352" />
-<canvas #mapCanvas></canvas>
