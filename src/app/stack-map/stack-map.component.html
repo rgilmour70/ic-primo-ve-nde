@@ -1,6 +1,7 @@
-<ul class="dev-only">
-  <li>CALL NUMBER: {{ hostComponent.location.callNumber }}</li>
-  <li>LOCATION: {{ hostComponent.location.subLocation }}</li>
-  <li>LOCATION CODE: {{ hostComponent.location.subLocationCode }}</li>
-  <li>AVAILABILITY: {{ hostComponent.location.availabilityStatus }}</li>
-</ul>
+@if (hasMessage(result)) {
+<div>{{ result.message }}</div>
+} @else {
+<div>{{ result!.id }}</div>
+}
+<img [src]="floorMapSrc" #floorMap [width]="600" [height]="352" />
+<canvas #mapCanvas></canvas>
