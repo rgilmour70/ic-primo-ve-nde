@@ -6,20 +6,21 @@ import {
   ElementRef,
   AfterViewInit,
 } from '@angular/core';
-import stackMapDataGeneral from '../../assets/map-data-general.json';
-import stackMapDataMusic from '../../assets/map-data-music.json';
-import stackMapDataBlobs from '../../assets/map-data-blobs.json';
+import stackMapDataGeneral from './data/map-data-general.json';
+import stackMapDataMusic from './data/map-data-music.json';
+import stackMapDataBlobs from './data/map-data-blobs.json';
 import { PrimoLocation } from './models/primo-location';
 import { ICLocation } from './models/ic-location';
 import { ICBlob, ICBlobs } from './models/ic-blob';
 import { normalizeLC, sortLC } from './lc-utils/call-number-functions';
+import { AssetsPublicPathDirective } from '../services/assets-public-path.directive';
 
 const icBlobs: ICBlobs = stackMapDataBlobs;
 
 @Component({
   selector: 'custom-stack-map',
   standalone: true,
-  imports: [],
+  imports: [AssetsPublicPathDirective],
   templateUrl: './stack-map.component.html',
   styleUrl: './stack-map.component.scss',
 })
