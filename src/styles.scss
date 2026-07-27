@@ -14,3 +14,10 @@ $theme: mat.m2-define-light-theme(
 );
 
 @include mat.all-component-themes($theme);
+
+.grid-container-lobby > nde-collection-discovery-gallery-collection {
+  display: none !important;
+}
+nde-collection-discovery-gallery-collection:empty {
+  display: none !important;
+}

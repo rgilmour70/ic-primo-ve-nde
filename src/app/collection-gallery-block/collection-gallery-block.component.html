@@ -1,0 +1,10 @@
+<div class="ic-collection-block">
+  <a [href]="collectionUrl">
+    <h2>{{ hostComponent.collection.name }}</h2>
+    <p>{{ hostComponent.collection.description }}</p>
+  </a>
+  <custom-collection-thumbnail
+    [collectionName]="hostComponent?.collection?.name"
+  >
+  </custom-collection-thumbnail>
+</div>

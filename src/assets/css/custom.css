@@ -25,3 +25,6 @@ nde-logo img {
 nde-record-actions {
   display: flex !important;
 }
+mat-divider {
+  display: none !important;
+}
