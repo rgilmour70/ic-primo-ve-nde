@@ -28,3 +28,6 @@ nde-record-actions {
 mat-divider {
   display: none !important;
 }
+.ic-collection-block {
+  position: relative;
+}

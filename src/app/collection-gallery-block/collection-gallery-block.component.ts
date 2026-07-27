@@ -17,7 +17,6 @@ import { CollectionThumbnailComponent } from '../collection-thumbnail/collection
 })
 export class CollectionGalleryBlockComponent implements AfterViewInit {
   @Input() hostComponent!: any;
-  @Input() collectionName!: string;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -34,6 +33,10 @@ export class CollectionGalleryBlockComponent implements AfterViewInit {
 
   get collectionDescription(): string {
     return this.hostComponent?.collection?.description;
+  }
+
+  get collectionName(): string {
+    return this.hostComponent?.collection?.name;
   }
 
   ngOnInit() {

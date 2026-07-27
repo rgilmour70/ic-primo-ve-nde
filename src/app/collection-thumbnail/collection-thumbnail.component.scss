@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  position: absolute;
+  inset: 0; // stretches to fill the parent card completely
+
+  .icon-container ::ng-deep svg {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0.6;
+    height: 80px;
+    width: 80px;
+  }
+}
