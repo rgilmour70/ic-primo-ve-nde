@@ -33,6 +33,11 @@ mat-divider {
   overflow: hidden;
   background-color: pink;
 }
+.ic-collection-block a:hover {
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 2px !important;
+}
 .collection-discovery-header {
   background: var(--sys-primary-container) !important;
 }
