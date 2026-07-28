@@ -1,12 +1,18 @@
 .ic-collection-block {
-  border: 1px solid #e4e4e4;
+  border: 2px solid #e4e4e4;
   border-radius: 14px;
   padding: 1rem 2rem !important;
   min-height: 300px;
   background-color: #f6f6f6;
 }
 .ic-collection-block:hover {
-  background-color: white;
+  background-color: #fafafa;
+  border: 2px solid #fde1d5;
+  transition: 0.3s ease;
+}
+.ic-collection-block:hover ::ng-deep .icon-container svg {
+  fill: red;
+  transition: fill 0.3s ease;
 }
 h2 {
   font-size: 2.2rem;

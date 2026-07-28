@@ -30,4 +30,9 @@ mat-divider {
 }
 .ic-collection-block {
   position: relative;
+  overflow: hidden;
+  background-color: pink;
+}
+.collection-discovery-header {
+  background: var(--sys-primary-container) !important;
 }
