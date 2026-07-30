@@ -41,3 +41,14 @@ mat-divider {
 .collection-discovery-header {
   background: var(--sys-primary-container) !important;
 }
+@media (max-width: 960px) {
+  nde-record-actions ng-component {
+    flex: 1 1 auto !important;
+    a {
+      width: 100% !important;
+      button {
+        width: 100% !important;
+      }
+    }
+  }
+}
