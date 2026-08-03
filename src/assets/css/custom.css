@@ -63,3 +63,6 @@ mat-divider {
 .custom-search-bar-container h1 {
   display: none !important;
 }
+.main-landing-page {
+  display: none !important;
+}
