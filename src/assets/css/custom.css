@@ -28,10 +28,11 @@ nde-record-actions {
 mat-divider {
   display: none !important;
 }
+
+/* DIGITAL COLLECTIONS */
 .ic-collection-block {
   position: relative;
   overflow: hidden;
-  background-color: pink;
 }
 .ic-collection-block a:hover {
   text-decoration: underline !important;
@@ -39,7 +40,8 @@ mat-divider {
   text-underline-offset: 2px !important;
 }
 .collection-discovery-header {
-  background: var(--sys-primary-container) !important;
+  /* background: var(--sys-primary-container) !important; */
+  display: none !important;
 }
 @media (max-width: 960px) {
   nde-record-actions ng-component {
