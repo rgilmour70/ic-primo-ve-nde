@@ -29,3 +29,5 @@ IC's own custom system for mapping physical items to the stack or the appropriat
 ### Other Components
 
 I have over-ridden the `nde-collection-discovery-gallery-collection` and the `nde-collection-discovery-thumbnail` components. These display as simple tiles with big SVG icons representing the type of collection. This might be useful for those librarys with collections that don't work well with the pictorial approach taken by Ex Libris.
+
+![Collection discovery rewrite](screenshots/CollectionDiscovery.png)
