@@ -68,3 +68,11 @@ mat-divider {
 .main-landing-page {
   display: none !important;
 }
+
+/* JOURNAL SEARCH & BROWSE SEARCH HEADERS */
+nde-general-search-header {
+  background: #25548b !important;
+  & > .general-search-header {
+    height: unset !important;
+  }
+}
