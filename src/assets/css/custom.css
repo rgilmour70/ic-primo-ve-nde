@@ -29,6 +29,19 @@ mat-divider {
   display: none !important;
 }
 
+/* FIX FOR WEIRD LOOKING FOCUS EFFECT ON SEARCH BAR */
+/* Remove the input's own focus ring so it doesn't show a second/mismatched one */
+.search-input-field,
+.search-input-field.keyboard-focused,
+.search-input-field:focus {
+  outline: none !important;
+}
+/* Ring the whole container (dropdown + input) together */
+.search-bar-wrapper:has(.search-input-field.keyboard-focused) {
+  outline: 2px solid var(--darkText);
+  border-radius: 2.5rem;
+}
+
 /* DIGITAL COLLECTIONS */
 .ic-collection-block {
   position: relative;
@@ -75,4 +88,9 @@ nde-general-search-header {
   & > .general-search-header {
     height: unset !important;
   }
+}
+
+/* MARKERS FOR PEER-REVIEW, OPEN ACCESS */
+nde-record-indications {
+  display: none !important;
 }
