@@ -4,6 +4,10 @@
   padding: 1rem 2rem !important;
   min-height: 300px;
   background-color: #f6f6f6;
+  h2 {
+    line-height: 2.2rem;
+    font-size: 1.8rem;
+  }
 }
 .ic-collection-block:hover {
   background-color: #fafafa;
@@ -13,7 +17,4 @@
 .ic-collection-block:hover ::ng-deep .icon-container svg {
   fill: red;
   transition: fill 0.3s ease;
-}
-h2 {
-  font-size: 2.2rem;
 }

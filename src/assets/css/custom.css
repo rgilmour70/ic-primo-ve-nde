@@ -42,32 +42,6 @@ mat-divider {
   border-radius: 2.5rem;
 }
 
-/* DIGITAL COLLECTIONS */
-.ic-collection-block {
-  position: relative;
-  overflow: hidden;
-}
-.ic-collection-block a:hover {
-  text-decoration: underline !important;
-  text-decoration-thickness: 1px !important;
-  text-underline-offset: 2px !important;
-}
-.collection-discovery-header {
-  /* background: var(--sys-primary-container) !important; */
-  display: none !important;
-}
-@media (max-width: 960px) {
-  nde-record-actions ng-component {
-    flex: 1 1 auto !important;
-    a {
-      width: 100% !important;
-      button {
-        width: 100% !important;
-      }
-    }
-  }
-}
-
 /* LANDING PAGE */
 .top-bar-background-image {
   background: var(--ic-blue) !important;
@@ -89,8 +63,36 @@ nde-general-search-header {
     height: unset !important;
   }
 }
+nde-browse-home-page .title-icon-container {
+  display: none !important;
+}
 
 /* MARKERS FOR PEER-REVIEW, OPEN ACCESS */
 nde-record-indications {
   display: none !important;
+}
+
+/* DIGITAL COLLECTIONS */
+.ic-collection-block {
+  position: relative;
+  overflow: hidden;
+}
+.ic-collection-block a:hover {
+  text-decoration: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 2px !important;
+}
+.collection-discovery-header {
+  display: none !important;
+}
+@media (max-width: 960px) {
+  nde-record-actions ng-component {
+    flex: 1 1 auto !important;
+    a {
+      width: 100% !important;
+      button {
+        width: 100% !important;
+      }
+    }
+  }
 }
