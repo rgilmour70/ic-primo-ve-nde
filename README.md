@@ -6,7 +6,7 @@ See [Ex Libris Group/customModule](https://github.com/ExLibrisGroup/customModule
 
 ## Overview
 
-This repo contains the customization package for Ithaca College Library's Primo VE NDE. Most importantly, it contains these three custom components:
+This repo contains the customization package for Ithaca College Library's Primo VE NDE. Most importantly, it contains these four custom components:
 
 ### OtherSearchComponent
 
@@ -19,6 +19,10 @@ Creates "try your search in..." links to Google Scholar and EBSCO Research Libra
 Adds a "report a problem" icon link to the "actions" area in both the brief view and the full view. The link points to our own form for record problems, but you could modify the component to point anywhere. The URL will carry various data points along as parameters so that whatever form is on the other end can use them for pre-filling and/or to pass along to another system. Built on `nde-record-actions-bottom`.
 
 !["Report a Problem" link in brief view](screenshots/ReportProblem.png)
+
+### PermalinkComponent (and PermalinkDialogComponent)
+
+We weren't thrilled about the permalink button being in the "share" submenu and wanted one at the top level.
 
 ### StackMapComponent
 
