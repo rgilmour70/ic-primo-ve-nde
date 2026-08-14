@@ -50,7 +50,6 @@ export class PermalinkComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.hostComponent);
     this.sub = this.getRecordSource().subscribe(({ record }) => {
       this.buildPermalink(record);
     });
@@ -68,7 +67,6 @@ export class PermalinkComponent implements OnInit, OnDestroy {
   }
 
   private buildPermalink(record: any): void {
-    console.log('RECORD: ', record);
     const recordId = record?.pnx?.control?.recordid?.[0] ?? '';
     const context = record?.context ?? '';
     const vid = environment.viewId;
@@ -79,7 +77,6 @@ export class PermalinkComponent implements OnInit, OnDestroy {
       context +
       '&vid=' +
       vid;
-    console.log('PERMALINK: ', this.permalink);
   }
 
   private getRecordSource(): Observable<{ record: any }> {
