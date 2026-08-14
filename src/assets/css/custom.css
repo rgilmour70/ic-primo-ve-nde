@@ -42,6 +42,11 @@ mat-divider {
   border-radius: 2.5rem;
 }
 
+/* HIDE THE PERMALINK BUTTON IN THE SEARCH RESULTS TOP BAR */
+nde-search-results-top-bar nde-record-actions ng-component:first-of-type {
+  display: none !important;
+}
+
 /* LANDING PAGE */
 .top-bar-background-image {
   background: var(--ic-blue) !important;

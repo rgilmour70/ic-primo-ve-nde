@@ -59,6 +59,10 @@ export class PermalinkComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
+  get shouldShowButton(): boolean {
+    return !!this.permalink;
+  }
+
   openDialog(): void {
     this.dialog.open(PermalinkDialogComponent, {
       data: { permalink: this.permalink },
@@ -77,6 +81,7 @@ export class PermalinkComponent implements OnInit, OnDestroy {
       context +
       '&vid=' +
       vid;
+    console.log(this.permalink);
   }
 
   private getRecordSource(): Observable<{ record: any }> {
