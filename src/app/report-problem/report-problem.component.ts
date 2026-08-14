@@ -9,6 +9,7 @@ import {
 } from '@ngrx/store';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { environment } from '../../environments/environment';
 
 const selectSearchState = createFeatureSelector<any>('Search');
 
@@ -95,10 +96,14 @@ export class ReportProblemComponent implements OnInit, OnDestroy {
     const callNumber = delivery?.delivery?.bestlocation?.callNumber ?? '';
     const recordId = record?.pnx?.control?.recordid?.[0] ?? '';
     const mmsid = recordId.substring(4);
+    const context = record?.context ?? '';
     const permalink =
-      'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=' +
+      'https://ithaca.primo.exlibrisgroup.com/nde/fulldisplay?docid=' +
       recordId +
-      '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
+      '&context' +
+      context +
+      '&vid=' +
+      environment.viewId;
     const base = 'https://library.ithaca.edu/forms/primo_problems.php';
 
     const params = new URLSearchParams({

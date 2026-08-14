@@ -11,6 +11,7 @@ import {
 } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { PermalinkDialogComponent } from '../permalink-dialog/permalink-dialog.component';
+import { environment } from '../../environments/environment';
 
 const selectSearchState = createFeatureSelector<any>('Search');
 
@@ -49,6 +50,7 @@ export class PermalinkComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.hostComponent);
     this.sub = this.getRecordSource().subscribe(({ record }) => {
       this.buildPermalink(record);
     });
@@ -69,12 +71,14 @@ export class PermalinkComponent implements OnInit, OnDestroy {
     console.log('RECORD: ', record);
     const recordId = record?.pnx?.control?.recordid?.[0] ?? '';
     const context = record?.context ?? '';
+    const vid = environment.viewId;
     this.permalink =
       'https://ithaca.primo.exlibrisgroup.com/nde/fulldisplay?docid=' +
       recordId +
       '&context=' +
       context +
-      '&vid=01ITHACACOL_INST:NDEFINAL';
+      '&vid=' +
+      vid;
     console.log('PERMALINK: ', this.permalink);
   }
 
