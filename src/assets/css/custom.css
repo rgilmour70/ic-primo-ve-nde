@@ -79,7 +79,7 @@ nde-record-indications {
 
 /* PREVENTS :FOCUS-WITHIN FROM SHIFTING THE TEXT */
 .search-result-item {
-  border-inline-start: 4px solid transparent !important;
+  border-inline-start: 4px solid transparent;
 }
 
 /* DIGITAL COLLECTIONS */
