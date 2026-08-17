@@ -77,6 +77,11 @@ nde-record-indications {
   display: none !important;
 }
 
+/* PREVENTS :FOCUS-WITHIN FROM SHIFTING THE TEXT */
+.search-result-item {
+  border-inline-start: 4px solid transparent !important;
+}
+
 /* DIGITAL COLLECTIONS */
 .ic-collection-block {
   position: relative;
