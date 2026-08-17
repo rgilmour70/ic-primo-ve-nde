@@ -100,7 +100,7 @@ export class ReportProblemComponent implements OnInit, OnDestroy {
     const permalink =
       'https://ithaca.primo.exlibrisgroup.com/nde/fulldisplay?docid=' +
       recordId +
-      '&context' +
+      '&context=' +
       context +
       '&vid=' +
       environment.viewId;

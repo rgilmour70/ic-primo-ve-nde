@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Observable, Subscription, combineLatest, of } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   createFeatureSelector,
@@ -60,7 +60,10 @@ export class PermalinkComponent implements OnInit, OnDestroy {
   }
 
   get shouldShowButton(): boolean {
-    return !!this.permalink;
+    const searchResult = this.hostComponent?.searchResult;
+    return (
+      !!this.permalink && !!searchResult && Object.keys(searchResult).length > 0
+    );
   }
 
   openDialog(): void {
@@ -68,20 +71,6 @@ export class PermalinkComponent implements OnInit, OnDestroy {
       data: { permalink: this.permalink },
       width: '450px',
     });
-  }
-
-  private buildPermalink(record: any): void {
-    const recordId = record?.pnx?.control?.recordid?.[0] ?? '';
-    const context = record?.context ?? '';
-    const vid = environment.viewId;
-    this.permalink =
-      'https://ithaca.primo.exlibrisgroup.com/nde/fulldisplay?docid=' +
-      recordId +
-      '&context=' +
-      context +
-      '&vid=' +
-      vid;
-    console.log(this.permalink);
   }
 
   private getRecordSource(): Observable<{ record: any }> {
@@ -93,6 +82,18 @@ export class PermalinkComponent implements OnInit, OnDestroy {
       return of({ record: searchResult });
     }
 
-    return combineLatest([this.record$]).pipe(map(([record]) => ({ record })));
+    return this.record$.pipe(map((record) => ({ record })));
+  }
+
+  private buildPermalink(record: any): void {
+    const recordId = record?.pnx?.control?.recordid?.[0] ?? '';
+    const context = record?.context ?? '';
+    this.permalink =
+      'https://ithaca.primo.exlibrisgroup.com/nde/fulldisplay?docid=' +
+      recordId +
+      '&context=' +
+      context +
+      '&vid=' +
+      environment.viewId;
   }
 }
