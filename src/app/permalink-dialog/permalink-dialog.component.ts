@@ -28,10 +28,13 @@ import { CommonModule } from '@angular/common';
       <div class="permalink-row">
         <span class="permalink-text">{{ data.permalink }}</span>
         <button mat-icon-button (click)="copyLink()" matTooltip="Copy link">
+          @if (copied) {
+          <mat-icon>done_all</mat-icon>
+          } @else {
           <mat-icon>content_copy</mat-icon>
+          }
         </button>
       </div>
-      <p *ngIf="copied" class="copied-msg">Copied!</p>
     </mat-dialog-content>
   `,
   styles: [
